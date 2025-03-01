@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@expo/vector-icons": "^14.0.4",
+    "@stripe/stripe-react-native": "^0.42.0",
+    "firebase": "^11.4.0",
+    "react-native-fs": "^2.20.0"
+  }
+}

@@ -43,8 +43,10 @@
 
 
 
+// firebase.js
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, doc, onSnapshot, updateDoc, increment } from 'firebase/firestore';
+import { getFirestore, doc, collection, addDoc, query, onSnapshot, where, updateDoc, deleteDoc } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = {
       apiKey: "AIzaSyCXb3jeztUITEOH3sq2twktTC4dt0367Gk",
@@ -58,9 +60,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-
-// // Optional: Export utility functions for convenience
+export const auth = getAuth(app);
+export { doc, collection, addDoc, query, onSnapshot, where, updateDoc, deleteDoc, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged };
 export const getUserDoc = (userId) => doc(db, 'users', userId);
-
-
-

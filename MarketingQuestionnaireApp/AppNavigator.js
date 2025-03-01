@@ -6,19 +6,19 @@ import HomeScreen from './screens/HomeScreen';
 import CreateScreen from './screens/CreateScreen';
 import GetPaidScreen from './screens/GetPaidScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import { ThemeContext } from './screens/SettingsScreen';
-import { Home, PlusCircle, Bell, Settings as SettingsIcon } from 'lucide-react-native';
+import { useTheme } from './screens/SettingsScreen';
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
-  const { theme } = React.useContext(ThemeContext);
+  const { theme } = useTheme();
 
   const screens = [
-    { name: 'Answer', component: HomeScreen, icon: Home },
-    { name: 'Create', component: CreateScreen, icon: PlusCircle },
-    { name: 'Get Paid', component: GetPaidScreen, icon: Bell },
-    { name: 'Settings', component: SettingsScreen, icon: SettingsIcon }
+    { name: 'Answer', component: HomeScreen, icon: 'home' },
+    { name: 'Create', component: CreateScreen, icon: 'add-circle' },
+    { name: 'Get Paid', component: GetPaidScreen, icon: 'cash' },
+    { name: 'Settings', component: SettingsScreen, icon: 'settings' },
   ];
 
   return (
@@ -30,21 +30,20 @@ export default function AppNavigator() {
             borderTopWidth: 1,
             borderTopColor: '#4A5568',
             elevation: 6,
-            height: 60
+            height: 60,
           },
           tabBarActiveTintColor: '#FFFFFF',
           tabBarInactiveTintColor: '#A0AEC0',
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             const screen = screens.find(s => s.name === route.name);
-            const IconComponent = screen.icon;
-            return <IconComponent size={size} color={focused ? '#FFFFFF' : '#A0AEC0'} />;
+            return <Ionicons name={screen.icon} size={size} color={focused ? '#FFFFFF' : '#A0AEC0'} />;
           },
           tabBarLabel: ({ focused, color }) => (
             <Text style={{ fontSize: 12, fontWeight: 'bold', color: focused ? '#FFFFFF' : '#A0AEC0' }}>
               {route.name}
             </Text>
-          )
+          ),
         })}
       >
         {screens.map(screen => (
