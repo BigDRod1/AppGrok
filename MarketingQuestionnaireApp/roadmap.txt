@@ -1,0 +1,172 @@
+Roadmap for Building the Marketing Questionnaire App
+Phase 1: Initial Setup and Core UI
+This phase sets up the foundation and builds the basic user interface.
+Task 1: Set up the development environment
+Choose a tech stack, such as React Native for cross-platform mobile development (works on both iOS and Android).
+Install necessary tools: 
+Node.js (JavaScript runtime).
+Expo CLI (for React Native development and testing).
+A code editor like Visual Studio Code.
+Run npx create-expo-app MarketingQuestionnaireApp to create the project.
+Set up version control with Git: Initialize a repository (git init) and push it to a remote service like GitHub.
+Task 2: Design the basic UI layout
+Sketch wireframes for key screens: 
+Question List (home screen with a list of questions).
+Answer Screen (where users respond to questions).
+Settings (user preferences).
+Get Paid (earnings and withdrawal options).
+In your project, create a bottom navigation panel with icons/labels for Answer, Settings, and Get Paid using a library like react-navigation.
+Apply a clean design with a light background, readable fonts, and consistent button styles.
+Task 3: Implement the Question List screen
+In the main screen file (e.g., HomeScreen.js), use a FlatList component to display a scrollable list of placeholder questions (e.g., "What's your favorite color?").
+Add a balance widget in the top right corner with static text (e.g., "$0.00") using a Text component inside a View with styling.
+Phase 2: User Flow - Answering Questions
+This phase enables users to answer questions and see their balance update.
+Task 4: Develop the Answer feature
+Make each question in the FlatList clickable, navigating to an AnswerScreen.js file using navigation.navigate('Answer').
+In AnswerScreen.js, display the selected question and add response options (e.g., a TextInput for text answers or buttons for multiple choice).
+Task 5: Add submission functionality
+Add a "Submit" button below the response input in AnswerScreen.js.
+On button press, show an alert (e.g., Alert.alert("Success", "Answer submitted successfully")) and return the user to the Question List screen.
+Task 6: Integrate the balance system
+Use a state management tool like useState or Redux to track the user's balance (start at $0.00).
+After a successful submission in Task 5, increase the balance by a fixed amount (e.g., $0.10) and update the balance widget on the Question List screen.
+Phase 3: Create Feature and Content Management
+This phase adds the ability for users to create and manage content.
+Task 7: Build the Settings screen
+Create a SettingsScreen.js file accessible from the bottom navigation.
+Add simple options like notification toggles and theme preferences using Switch components.
+Task 8: Implement the Create feature
+Create a CreateScreen.js file accessible from the bottom navigation.
+Build a form interface for creating questions with:
+- TextInput for question text
+- Dropdown or radio buttons for response type
+- TextInput for payment terms
+Add a preview feature to review content before posting.
+Task 9: Develop content management
+Add a section in CreateScreen to view and manage posted content.
+Implement edit and delete functionality for existing posts.
+Add analytics for viewing response rates and engagement.
+Phase 4: Content Creation and Payment Processing
+This phase handles the payment and posting system for created content.
+Task 10: Develop the Ask feature
+Create an AskScreen.js file accessible via the "Ask" navigation option.
+Build a form with:
+TextInput for question text.
+Dropdown or radio buttons for response type (e.g., text, multiple choice).
+TextInput for payment terms (e.g., "$0.05 per response").
+Add a "Post" button to submit the form.
+Task 11: Implement payment processing for customers
+Install a payment library like stripe/stripe-react-native.
+Before posting, prompt the customer to enter payment details using Stripe's UI components.
+On successful payment, save the post details locally or in a database and show a confirmation message.
+Task 12: Build the response collection system
+Set up a backend database (e.g., Firebase Firestore) to store responses.
+After a user submits an answer (Task 5), save it to the database with the question ID and user ID.
+In AskScreen.js, add a section to fetch and display responses for the customer's posts.
+Task 13: Add analytics features
+In the response display section, show a basic count (e.g., "Responses: 10") using a Text component.
+Add a button to download responses as a CSV file using a library like react-native-fs.
+Phase 5: Payment System for Users
+This phase handles user earnings and payouts.
+Task 14: Implement user earnings management
+In GetPaidScreen.js, display the current balance and a list of past earnings (e.g., "$0.10 - 10/01/2023").
+Store earnings history in local state or the database.
+Task 15: Develop the Get Paid feature
+Add a "Request Withdrawal" button in GetPaidScreen.js.
+Set a minimum threshold (e.g., $5) and check if the balance meets it before enabling the button.
+Integrate the payment gateway (e.g., PayPal API) to process payouts manually or automatically.
+Phase 6: Authenticity and Security Measures
+This phase ensures real users and secure data.
+Task 16: Add user verification
+During app startup, show a registration screen with email or phone input.
+Use Firebase Authentication to send a verification email or SMS code.
+Add a CAPTCHA (e.g., via react-native-recaptcha) on the Answer Screen before submission.
+Task 17: Ensure data security
+Encrypt sensitive data like payment details using HTTPS for API calls.
+Anonymize responses in the database (e.g., store user IDs instead of names).
+Review compliance with privacy laws like GDPR or CCPA.
+Phase 7: Testing and Optimization
+This phase ensures the app works well and performs efficiently.
+Task 18: Conduct thorough testing
+Test on iOS and Android simulators using Expo (npx expo start).
+Manually test each feature (e.g., answering questions, posting as a customer).
+Fix bugs like navigation errors or UI glitches.
+Task 19: Optimize performance
+Use React.memo or useCallback to prevent unnecessary re-renders.
+Add pagination to the Question List (e.g., load 10 questions at a time) using FlatList's onEndReached.
+Test load times with dummy data and optimize slow database queries.
+Phase 8: Deployment
+This phase launches the app to the public.
+Task 20: Prepare for deployment
+Set up a production backend (e.g., Firebase or AWS).
+Switch the payment gateway to live mode (update API keys in Stripe/PayPal).
+Build the app for production with npx expo build:android and npx expo build:ios.
+Task 21: Launch the app
+Submit the app to Google Play Store and Apple App Store via their developer consoles.
+Monitor crash reports and user feedback using tools like Expo's dashboard.
+Release quick updates for any critical issues post-launch.
+Conclusion
+This roadmap provides clear, actionable steps to build the Marketing Questionnaire App from scratch to deployment. By following these tasks one at a time, you'll create a functional app with a user-friendly interface, secure payments, and robust features for both users and customers. Start with Task 1 and work your way through—happy coding!
+
+---
+Currently ready for task 9: Develop content management
+- Add a section in CreateScreen to view and manage posted content
+- Implement edit and delete functionality for existing posts
+- Add analytics for viewing response rates and engagement 
+
+
+
+Phase 1: Initial Setup and Core UI (Completed)
+Task 1: Set up the development environment: Done (React Native with Expo, Git initialized).
+
+Task 2: Design the basic UI layout: Done (bottom navigation, HomeScreen, CreateScreen, SettingsScreen).
+
+Task 3: Implement the Question List screen: Done (HomeScreen.js with swipe submission).
+
+Phase 2: User Flow - Answering Questions (Completed)
+Task 4: Develop the Answer feature: Done (question selection and answering in HomeScreen.js).
+
+Task 5: Add submission functionality: Done (swipe or button submission in HomeScreen.js).
+
+Task 6: Integrate the balance system: Done (Firebase balance updates in HomeScreen.js).
+
+Phase 3: Create Feature and Content Management (Completed)
+Task 7: Build the Settings screen: Partially done (theme support in SettingsScreen.js).
+
+Task 8: Implement the Create feature: Done (form with question, options, images, link, votes in CreateScreen.js).
+
+Task 9: Develop content management: Done (edit, delete, basic stats in CreateScreen.js "My Posts").
+
+Phase 4: Content Creation and Payment Processing (In Progress)
+Task 10: Develop the Ask feature: Done (integrated into CreateScreen.js with preview popup).
+
+Task 11: Implement payment processing for customers: Partially done (placeholder popup in CreateScreen.js; Stripe planned).
+
+Task 12: Build the response collection system: Not started (needs backend to store responses).
+
+Task 13: Add analytics features: Not started (basic response count in "My Posts," no CSV export yet).
+
+Phase 5: Payment System for Users (Not Started)
+Task 14: Implement user earnings management: Planned.
+
+Task 15: Develop the Get Paid feature: Planned.
+
+Phase 6: Authenticity and Security Measures (Not Started)
+Task 16: Add user verification: Planned.
+
+Task 17: Ensure data security: Planned.
+
+Phase 7: Testing and Optimization (Not Started)
+Task 18: Conduct thorough testing: Planned.
+
+Task 19: Optimize performance: Planned.
+
+Phase 8: Deployment (Not Started)
+Task 20: Prepare for deployment: Planned.
+
+Task 21: Launch the app: Planned.
+
+Conclusion
+Tasks 1-9 are fully completed, Task 10 is integrated into CreateScreen.js, and Task 11 is partially done with a placeholder popup. Next steps focus on Task 12 (response collection) and completing payment integration.
+

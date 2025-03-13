@@ -1,0 +1,119 @@
+Overview
+The Marketing Questionnaire App is a platform where customers can post questions, ads, or forms to collect responses from users, who are incentivized to answer with small monetary rewards. The core goal is to guarantee authentic responses from real people, providing valuable data to customers. The app must be clean, visually appealing, and intuitive to ensure high user engagement and satisfaction.
+User Roles
+Users: Individuals who answer questions and earn small rewards per response.
+
+Customers: Individuals or entities who pay to post questions, ads, or forms and collect responses from users.
+
+Key Features
+User Interface
+Design: Clean, visually appealing, and user-friendly.
+
+Bottom Panel Options:
+Answer: Displays a list of questions for users to respond to (implemented in HomeScreen.js).
+
+Create: Allows customers to create and post questions, ads, or forms (implemented in CreateScreen.js).
+
+Get Paid: Enables users to view earnings and request withdrawals (not yet implemented).
+
+Settings: Allows app configuration and preferences (partially implemented in SettingsScreen.js).
+
+Top Right Widget: Real-time display of the user's current balance (implemented in HomeScreen.js).
+
+User Flow
+Initial Screen: Scrollable list of available questions (HomeScreen.js).
+
+Answering Questions:
+Select a question from the list (done).
+
+Provide a response (text or multiple choice, implemented).
+
+Submit via button or swipe (swipe implemented in HomeScreen.js).
+
+Reward System: Balance increases per submitted answer (implemented with Firebase in HomeScreen.js).
+
+Creator Flow
+Creating Content:
+Navigate to Create tab (CreateScreen.js).
+
+Input question details: text, response type (multiple choice), up to 2 pictures, optional link, and number of votes (implemented).
+
+Preview the question before posting (implemented as a popup mimicking HomeScreen).
+
+Set payment terms via votes (implemented with a hardcoded $0.10/vote rate).
+
+Submit after payment confirmation (placeholder popup implemented).
+
+Response Collection: View and analyze responses (basic "My Posts" section implemented, no analytics yet).
+
+Payment System
+User Earnings: Users receive $0.10 per answer (implemented in HomeScreen.js with Firebase).
+
+Customer Payments: Customers pay based on votes ($0.10/vote), with a preview step before payment confirmation (implemented as a placeholder popup in CreateScreen.js).
+
+Implementation: Secure payment gateway (Stripe planned but not yet integrated; placeholder popup used instead).
+
+Response Authenticity
+Goal: Ensure responses are from real people.
+
+Measures: Planned but not implemented:
+User verification during registration.
+
+CAPTCHA or anti-bot checks.
+
+Optional moderation of responses.
+
+App Flow Diagram (Updated)
+mermaid
+
+graph TD
+    A[Open App] --> B[View Questions List - HomeScreen]
+    B --> C[Select Answer Option]
+    C --> D[Choose Question]
+    D --> E[Provide Answer]
+    E --> F[Submit Answer]
+    F --> G[Balance Increases]
+    B --> H[Settings]
+    H --> I[Create Tab - CreateScreen]
+    I --> J[Input Question Details]
+    J --> K[Preview Question]
+    K --> L[Pay for Post]
+    L --> M[Collect Responses]
+    B --> N[Get Paid - Not Implemented]
+    N --> O[View Earnings/Withdraw]
+
+Technical Considerations
+Scalability: Supports growing users and questions (local state in CreateScreen.js, Firebase in HomeScreen.js).
+
+Database Management: Firebase used for user balance and answers (HomeScreen.js); local state for posts (CreateScreen.js).
+
+Payment Integration: Placeholder popup in CreateScreen.js; Stripe planned for later.
+
+User Experience: Clean navigation and fast load times implemented.
+
+Data Security: Firebase security rules in place; full encryption pending.
+
+Potential Challenges and Solutions (Updated)
+User Engagement: Competitive rewards implemented ($0.10/answer).
+
+Question Quality: Moderation queue planned but not implemented.
+
+Response Quality: No length checks or quality ratings yet.
+
+Payment Handling: Placeholder popup implemented; full payment system pending.
+
+Scalability: Firebase handles HomeScreen; CreateScreen needs backend integration.
+
+Data Privacy: Firebase security in place; full compliance pending.
+
+Development Progress
+Phase 1: Core Functionality: Completed (UI, question list, balance widget).
+
+Phase 2: Customer Features: Partially completed (creation flow with preview, payment placeholder).
+
+Phase 3: Authenticity and Polish: Not started.
+
+Phase 4: Scaling and Optimization: In progress (Tasks 10-11 done, Task 12 pending).
+
+Conclusion
+
